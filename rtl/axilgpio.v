@@ -492,7 +492,7 @@ module	axilgpio #(
 	begin
 		axil_read_data <= 0;
 
-		casez({ ((NIN>0)&& arskd_addr[2]), arskd_addr[1:0] })
+		casez({ ((NIN>0)&& arskd_addr[2]), arskd_addr[1:0] }) // @suppress "Default clause missing from case statement"
 		3'b0??:	axil_read_data[NOUT-1:0] <= r_gpio[NOUT-1:0];
 		ADDR_INDATA:	axil_read_data <= ck_gpio;
 		ADDR_CHANGED:	axil_read_data <= ck_toggled;

@@ -271,7 +271,7 @@ module skidbuffer #(
 		`ASSUME(i_valid && $stable(i_data));
 
 `ifdef	VERIFIC
-`define	FORMAL_VERIFIC
+`define	FORMAL_VERIFIC // @suppress "Macro 'FORMAL_VERIFIC' is never used"
 	// Reset properties
 	property RESET_CLEARS_IVALID;
 		@(posedge i_clk) i_reset |=> !i_valid;

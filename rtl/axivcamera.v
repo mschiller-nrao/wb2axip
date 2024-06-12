@@ -726,7 +726,7 @@ module	axivcamera #(
 		end
 
 		sfifo #(.BW(C_AXI_DATA_WIDTH+2), .LGFLEN(LGFIFO))
-		sfifo(i_clk, reset_fifo,
+		sfifo(i_clk, reset_fifo, // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 			write_to_fifo, { S_AXIS_VLAST,
 				(!OPT_IGNORE_HLAST && S_AXIS_HLAST),write_data},
 				fifo_full, fifo_fill,

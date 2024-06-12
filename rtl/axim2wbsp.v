@@ -299,7 +299,7 @@ module axim2wbsp #(
 	end else begin : ARB_WB
 		// {{{
 		wbarbiter	#(.DW(DW), .AW(AW))
-		readorwrite(S_AXI_ACLK, o_reset,
+		readorwrite(S_AXI_ACLK, o_reset, // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 			r_wb_cyc, r_wb_stb, r_wb_we, r_wb_addr, w_wb_data, r_wb_sel,
 				r_wb_ack, r_wb_stall, r_wb_err,
 			w_wb_cyc, w_wb_stb, w_wb_we, w_wb_addr, w_wb_data, w_wb_sel,

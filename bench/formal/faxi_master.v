@@ -124,7 +124,7 @@ module faxi_master #(
 	output	reg	[F_LGDEPTH-1:0]		f_axi_awr_nbursts,
 	output	reg	[9-1:0]			f_axi_wr_pending,
 	output	reg	[F_LGDEPTH-1:0]		f_axi_rd_nbursts,
-	output	reg	[F_LGDEPTH-1:0]		f_axi_rd_outstanding,
+	output	reg	[F_LGDEPTH-1:0]		f_axi_rd_outstanding
 	// ...
 	// }}}
 	// }}}
@@ -189,7 +189,7 @@ module faxi_master #(
 	// Setup
 	//
 	integer	k;
-
+	wire f_past_valid;
 	initial	f_past_valid = 1'b0;
 	always @(posedge i_clk)
 		f_past_valid <= 1'b1;
@@ -220,6 +220,7 @@ module faxi_master #(
 	//
 	//
 	// If asserted, the reset must be asserted for a minimum of 16 clocks
+	wire f_reset_length;
 	initial	f_reset_length = 0;
 	always @(posedge i_clk)
 	if (F_OPT_NO_RESET || i_axi_reset_n)

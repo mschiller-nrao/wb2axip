@@ -161,7 +161,7 @@ module aximwr2wbsp #(
 	skidbuffer #(
 		.OPT_OUTREG(0),
 		.DW(C_AXI_ADDR_WIDTH+C_AXI_ID_WIDTH+8+3+2))
-	awskid(S_AXI_ACLK, !S_AXI_ARESETN, S_AXI_AWVALID, S_AXI_AWREADY,
+	awskid(S_AXI_ACLK, !S_AXI_ARESETN, S_AXI_AWVALID, S_AXI_AWREADY, // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 		{ S_AXI_AWID, S_AXI_AWADDR, S_AXI_AWLEN,
 			S_AXI_AWSIZE, S_AXI_AWBURST },
 		skid_awvalid, accept_write_burst,
@@ -177,7 +177,7 @@ module aximwr2wbsp #(
 `endif
 		.OPT_OUTREG(0),
 		.DW(C_AXI_DATA_WIDTH + C_AXI_DATA_WIDTH/8+1))
-	wskid(S_AXI_ACLK, !S_AXI_ARESETN,
+	wskid(S_AXI_ACLK, !S_AXI_ARESETN, // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 		S_AXI_WVALID, S_AXI_WREADY,
 		{ S_AXI_WDATA, S_AXI_WSTRB, S_AXI_WLAST },
 		skid_wvalid, skid_wready,
@@ -248,7 +248,7 @@ module aximwr2wbsp #(
 	// next_addr
 	// {{{
 	axi_addr #(.AW(C_AXI_ADDR_WIDTH), .DW(C_AXI_DATA_WIDTH))
-	next_write_addr(axi_waddr, axi_wsize, axi_wburst, axi_wlen, next_addr);
+	next_write_addr(axi_waddr, axi_wsize, axi_wburst, axi_wlen, next_addr); // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 	// }}}
 
 	// }}}
@@ -398,7 +398,7 @@ module aximwr2wbsp #(
 	// {{{
 	sfifo #(.BW(8), .LGFLEN(LGFIFO),
 		.OPT_ASYNC_READ(1'b1))
-	wb_ack_fifo(S_AXI_ACLK, !S_AXI_ARESETN,
+	wb_ack_fifo(S_AXI_ACLK, !S_AXI_ARESETN, // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 		accept_write_burst, skid_awlen,
 		wb_ack_fifo_full, wb_ack_fifo_fill,
 		read_ack_fifo, fifo_ack_ln, wb_ack_fifo_empty);
@@ -496,7 +496,7 @@ module aximwr2wbsp #(
 	// bid_fifo - Keep track of BID's
 	// {{{
 	sfifo #(.BW(C_AXI_ID_WIDTH), .LGFLEN(LGFIFO))
-	bid_fifo(S_AXI_ACLK, !S_AXI_ARESETN,
+	bid_fifo(S_AXI_ACLK, !S_AXI_ARESETN, // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 		skid_wvalid && skid_wready && skid_wlast,
 			(total_fifo_fill == bid_fifo_fill) ? skid_awid:axi_wid,
 		bid_fifo_full, bid_fifo_fill,
@@ -506,7 +506,7 @@ module aximwr2wbsp #(
 	// err_fifo - Keep track of error returns
 	// {{{
 	sfifo #(.BW(1), .LGFLEN(LGFIFO))
-	err_fifo(S_AXI_ACLK, !S_AXI_ARESETN,
+	err_fifo(S_AXI_ACLK, !S_AXI_ARESETN, // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 		err_fifo_write, { ack_err || i_wb_err },
 		err_fifo_full, err_fifo_fill,
 		S_AXI_BVALID & S_AXI_BREADY, S_AXI_BRESP[1], err_fifo_empty);

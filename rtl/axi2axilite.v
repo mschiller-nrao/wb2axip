@@ -268,7 +268,7 @@ module axi2axilite #(
 			// {{{
 			.DW(IW+AW+8+3+2), .OPT_LOWPOWER(0), .OPT_OUTREG(0)
 			// }}}
-		) awskid(
+		) awskid( // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 			// {{{
 			S_AXI_ACLK, !S_AXI_ARESETN,
 			S_AXI_AWVALID, S_AXI_AWREADY,
@@ -287,7 +287,7 @@ module axi2axilite #(
 			// {{{
 			.DW(DW+DW/8+1), .OPT_LOWPOWER(0), .OPT_OUTREG(0)
 			// }}}
-		) wskid(
+		) wskid( // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 			// {{{
 			S_AXI_ACLK, !S_AXI_ARESETN,
 			S_AXI_WVALID, S_AXI_WREADY,
@@ -304,7 +304,7 @@ module axi2axilite #(
 			// {{{
 			.DW(DW+DW/8), .OPT_LOWPOWER(0), .OPT_OUTREG(1)
 			// }}}
-		) mwskid(
+		) mwskid( // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 			// {{{
 			S_AXI_ACLK, !S_AXI_ARESETN,
 			skidm_wvalid, skidm_wready, { skidm_wdata, skidm_wstrb },
@@ -319,7 +319,7 @@ module axi2axilite #(
 			// {{{
 			.DW(2), .OPT_LOWPOWER(0), .OPT_OUTREG(0)
 			// }}}
-		) bskid(
+		) bskid( // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 			// {{{
 			S_AXI_ACLK, !S_AXI_ARESETN,
 			M_AXI_BVALID, M_AXI_BREADY, { M_AXI_BRESP },
@@ -381,7 +381,7 @@ module axi2axilite #(
 			// {{{
 			.AW(C_AXI_ADDR_WIDTH), .DW(C_AXI_DATA_WIDTH)
 			// }}}
-		) calcwraddr(
+		) calcwraddr( // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 			// {{{
 			axi_awaddr, axi_awsize, axi_awburst,
 			axi_blen, next_write_addr
@@ -418,7 +418,7 @@ module axi2axilite #(
 		// {{{
 		sfifo	#(
 			.BW(C_AXI_ID_WIDTH+8), .LGFLEN(LGFIFO)
-		) bidlnfifo(
+		) bidlnfifo( // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 			S_AXI_ACLK, !S_AXI_ARESETN,
 			skids_awvalid && skids_awready,
 			{ skids_awid, skids_awlen },
@@ -480,7 +480,7 @@ module axi2axilite #(
 		end else if (skidm_bvalid && skidm_bready)
 		begin
 			// Let SLVERR take priority over DECERR
-			casez({ S_AXI_BRESP, skidm_bresp })
+			casez({ S_AXI_BRESP, skidm_bresp }) // @suppress "Default clause missing from case statement"
 			4'b??0?: axi_bresp <= S_AXI_BRESP;
 			4'b0?1?: axi_bresp <= skidm_bresp;
 			4'b1?10: axi_bresp <= SLVERR;
@@ -603,7 +603,7 @@ module axi2axilite #(
 			// {{{
 			.DW(IW+AW+8+3+2), .OPT_LOWPOWER(0), .OPT_OUTREG(0)
 			// }}}
-		) arskid(
+		) arskid( // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 			// {{{
 			S_AXI_ACLK, !S_AXI_ARESETN,
 			S_AXI_ARVALID, S_AXI_ARREADY,
@@ -621,7 +621,7 @@ module axi2axilite #(
 			// {{{
 			.DW(DW+2), .OPT_LOWPOWER(0), .OPT_OUTREG(0)
 			// }}}
-		) rskid(
+		) rskid( // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 			// {{{
 			S_AXI_ACLK, !S_AXI_ARESETN,
 			M_AXI_RVALID, M_AXI_RREADY,{ M_AXI_RDATA, M_AXI_RRESP },
@@ -661,7 +661,7 @@ module axi2axilite #(
 			// {{{
 			.AW(C_AXI_ADDR_WIDTH), .DW(C_AXI_DATA_WIDTH)
 			// }}}
-		) calcrdaddr(
+		) calcrdaddr( // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 			// {{{
 			axi_araddr, axi_arsize, axi_arburst,
 			axi_rlen, next_read_addr
@@ -694,7 +694,7 @@ module axi2axilite #(
 			// {{{
 			.BW(C_AXI_ID_WIDTH+8), .LGFLEN(LGFIFO)
 			// }}}
-		) ridlnfifo(
+		) ridlnfifo( // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 			// {{{
 			S_AXI_ACLK, !S_AXI_ARESETN,
 			skids_arvalid && skids_arready,

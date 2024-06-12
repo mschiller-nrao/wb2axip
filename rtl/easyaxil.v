@@ -265,7 +265,7 @@ module	easyaxil #(
 		r3 <= 0;
 	end else if (axil_write_ready)
 	begin
-		case(awskd_addr)
+		case(awskd_addr) // @suppress "Default clause missing from case statement"
 		2'b00:	r0 <= wskd_r0;
 		2'b01:	r1 <= wskd_r1;
 		2'b10:	r2 <= wskd_r2;
@@ -279,7 +279,7 @@ module	easyaxil #(
 		axil_read_data <= 0;
 	else if (!S_AXI_RVALID || S_AXI_RREADY)
 	begin
-		case(arskd_addr)
+		case(arskd_addr) // @suppress "Default clause missing from case statement"
 		2'b00:	axil_read_data	<= r0;
 		2'b01:	axil_read_data	<= r1;
 		2'b10:	axil_read_data	<= r2;

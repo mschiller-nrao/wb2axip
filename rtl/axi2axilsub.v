@@ -645,6 +645,7 @@ module axi2axilsub #(
 
 		// m_awvalid
 		// {{{
+		wire m_axi_awvalid;
 		initial	m_axi_awvalid = 0;
 		always @(posedge S_AXI_ACLK)
 		if (!S_AXI_ARESETN)
@@ -849,7 +850,7 @@ module axi2axilsub #(
 		else if (skidm_bvalid && skidm_bready)
 		begin
 			// Let SLVERR take priority over DECERR
-			casez({ bresp, skidm_bresp })
+			casez({ bresp, skidm_bresp }) // @suppress "Default clause missing from case statement"
 			4'b??0?: bresp <= bresp;
 			4'b0?1?: bresp <= skidm_bresp;
 			4'b1?10: bresp <= SLVERR;
@@ -926,7 +927,7 @@ module axi2axilsub #(
 			if (skidm_bvalid && skidm_bready)
 			begin
 				// Let SLVERR take priority over DECERR
-				casez({ bresp, skidm_bresp[1] })
+				casez({ bresp, skidm_bresp[1] }) // @suppress "Default clause missing from case statement"
 				3'b??0: s_axi_bresp <= s_axi_bresp;
 				3'b0?1: s_axi_bresp <= skidm_bresp;
 				3'b101: s_axi_bresp <= SLVERR;
@@ -1701,7 +1702,7 @@ module axi2axilsub #(
 			if (S_AXI_RVALID)
 				s_axi_rresp <= (skidm_rvalid) ? skidm_rresp : OKAY;
 			else if (skidm_rvalid)
-			casez({ s_axi_rresp, skidm_rresp[1] })
+			casez({ s_axi_rresp, skidm_rresp[1] }) // @suppress "Default clause missing from case statement"
 			// Let SLVERR take priority over DECERR
 			3'b??0: s_axi_rresp <= s_axi_rresp;
 			3'b0?1: s_axi_rresp <= skidm_rresp;

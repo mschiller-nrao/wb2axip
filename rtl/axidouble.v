@@ -481,7 +481,7 @@ module	axidouble #(
 		// {{{
 		.AW(C_AXI_ADDR_WIDTH), .DW(C_AXI_DATA_WIDTH)
 		// }}}
-	) get_next_write_address(
+	) get_next_write_address( // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 		// {{{
 		write_addr,
 			write_size, write_burst, write_awlen, next_waddr
@@ -803,7 +803,7 @@ module	axidouble #(
 		// {{{
 		.AW(C_AXI_ADDR_WIDTH), .DW(C_AXI_DATA_WIDTH)
 		// }}}
-	) get_next_read_address(
+	) get_next_read_address( // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 		// {{{
 		araddr,
 			arsize, arburst, arlen, next_araddr
@@ -926,7 +926,7 @@ module	axidouble #(
 		assign	read_index = 0;
 
 	end else begin : RD_INDEX
-		reg	[LGNS-1:0]	r_read_index = 0;
+		reg	[LGNS-1:0]	r_read_index = 0; // @suppress "Register initialization in declaration. Consider using an explicit reset instead"
 		integer			k;
 
 		always @(*)

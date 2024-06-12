@@ -484,7 +484,7 @@ module	axivfifo #(
 	assign	read_from_fifo= (!skd_valid || (M_AXI_WVALID && M_AXI_WREADY));
 
 	sfifo #(.BW(C_AXIS_DATA_WIDTH), .LGFLEN(LGFIFO))
-	ififo(S_AXI_ACLK, reset_fifo,
+	ififo(S_AXI_ACLK, reset_fifo, // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 		S_AXIS_TVALID && S_AXIS_TREADY,
 			S_AXIS_TDATA, ififo_full, ififo_fill,
 		read_from_fifo, ififo_data, ififo_empty);
@@ -786,7 +786,7 @@ module	axivfifo #(
 	assign	M_AXIS_TVALID = !ofifo_empty;
 
 	sfifo #(.BW(C_AXIS_DATA_WIDTH), .LGFLEN(LGFIFO))
-	ofifo(S_AXI_ACLK, reset_fifo,
+	ofifo(S_AXI_ACLK, reset_fifo, // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 		write_to_fifo,
 			M_AXI_RDATA, ofifo_full, ofifo_fill,
 		M_AXIS_TVALID && M_AXIS_TREADY, M_AXIS_TDATA, ofifo_empty);

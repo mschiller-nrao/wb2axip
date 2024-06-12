@@ -229,7 +229,7 @@ module	axilsingle #(
 	end else if (S_AXI_WVALID)
 		{ write_wready, m_axi_awvalid } <= 0;
 
-	assign	S_AXI_WREADY = write_wready;
+	assign	S_AXI_WREADY = write_wready; // @suppress "Duplicate continuous assignment to 'S_AXI_WREADY'"
 
 	always @(posedge S_AXI_ACLK)
 	if (awskid_valid && write_awskidready)
@@ -240,7 +240,7 @@ module	axilsingle #(
 
 	assign M_AXI_AWVALID = (S_AXI_WVALID) ? m_axi_awvalid : {(NS){1'b0}};
 	assign M_AXI_AWPROT = m_axi_awprot;
-	assign S_AXI_WREADY = write_wready;
+	assign S_AXI_WREADY = write_wready; // @suppress "Duplicate continuous assignment to 'S_AXI_WREADY'"
 	assign	M_AXI_WDATA = S_AXI_WDATA;
 	assign	M_AXI_WSTRB = S_AXI_WSTRB;
 		

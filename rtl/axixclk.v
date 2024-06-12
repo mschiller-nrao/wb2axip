@@ -202,7 +202,7 @@ module axixclk #(
 			.NFF(XCLOCK_FFS),
 			.WIDTH(C_S_AXI_ID_WIDTH + C_S_AXI_ADDR_WIDTH
 				+ 8 + 3 + 2 + 1 + 4 + 3 + 4))
-		awfifo(S_AXI_ACLK, S_AXI_ARESETN, S_AXI_AWVALID&& S_AXI_AWREADY,
+		awfifo(S_AXI_ACLK, S_AXI_ARESETN, S_AXI_AWVALID&& S_AXI_AWREADY, // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 			{ S_AXI_AWID, S_AXI_AWADDR,
 				S_AXI_AWLEN, S_AXI_AWSIZE, S_AXI_AWBURST,
 				S_AXI_AWLOCK,
@@ -221,7 +221,7 @@ module axixclk #(
 		afifo #(.LGFIFO(LGFIFO),
 			.NFF(XCLOCK_FFS),
 			.WIDTH(C_S_AXI_DATA_WIDTH + C_S_AXI_DATA_WIDTH/8 + 1))
-		wfifo(S_AXI_ACLK, S_AXI_ARESETN, S_AXI_WVALID&& S_AXI_WREADY,
+		wfifo(S_AXI_ACLK, S_AXI_ARESETN, S_AXI_WVALID&& S_AXI_WREADY, // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 			{ S_AXI_WDATA, S_AXI_WSTRB, S_AXI_WLAST },
 			wfull,
 			M_AXI_ACLK, M_AXI_ARESETN, M_AXI_WREADY,
@@ -234,7 +234,7 @@ module axixclk #(
 		afifo #(.LGFIFO(LGFIFO),
 			.NFF(XCLOCK_FFS),
 			.WIDTH(C_S_AXI_ID_WIDTH + 2))
-		bfifo(M_AXI_ACLK, M_AXI_ARESETN, M_AXI_BVALID&& M_AXI_BREADY,
+		bfifo(M_AXI_ACLK, M_AXI_ARESETN, M_AXI_BVALID&& M_AXI_BREADY, // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 			{ M_AXI_BID, M_AXI_BRESP }, bfull,
 			S_AXI_ACLK, S_AXI_ARESETN, S_AXI_BREADY,
 			{ S_AXI_BID, S_AXI_BRESP }, bempty);
@@ -277,7 +277,7 @@ module axixclk #(
 			.NFF(XCLOCK_FFS),
 			.WIDTH(C_S_AXI_ID_WIDTH + C_S_AXI_ADDR_WIDTH
 				+ 8 + 3 + 2 + 1 + 4 + 3 + 4))
-		arfifo(S_AXI_ACLK, S_AXI_ARESETN, S_AXI_ARVALID&& S_AXI_ARREADY,
+		arfifo(S_AXI_ACLK, S_AXI_ARESETN, S_AXI_ARVALID&& S_AXI_ARREADY, // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 			{ S_AXI_ARID, S_AXI_ARADDR,
 				S_AXI_ARLEN, S_AXI_ARSIZE, S_AXI_ARBURST,
 				S_AXI_ARLOCK,
@@ -297,7 +297,7 @@ module axixclk #(
 		afifo #(.LGFIFO(LGFIFO),
 			.NFF(XCLOCK_FFS),
 			.WIDTH(C_S_AXI_ID_WIDTH + C_S_AXI_DATA_WIDTH+3))
-		rfifo(M_AXI_ACLK, M_AXI_ARESETN, M_AXI_RVALID&& M_AXI_RREADY,
+		rfifo(M_AXI_ACLK, M_AXI_ARESETN, M_AXI_RVALID&& M_AXI_RREADY, // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 			{ M_AXI_RID, M_AXI_RDATA, M_AXI_RLAST, M_AXI_RRESP },
 			rfull,
 			S_AXI_ACLK, S_AXI_ARESETN, S_AXI_RREADY,

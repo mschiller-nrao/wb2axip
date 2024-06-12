@@ -203,7 +203,7 @@ module	axisgfsm #(
 	// {{{
 	always @(*)
 	begin
-		case(sgstate)
+		case(sgstate) // @suppress "Default clause missing from case statement"
 		SG_IDLE:	o_pf_ready = 1'b0;
 		SG_SRCHALF:	o_pf_ready = (!o_dmac_wvalid || i_dmac_wready);
 		SG_SRCADDR:	o_pf_ready = (!o_dmac_wvalid || i_dmac_wready);
@@ -290,7 +290,7 @@ module	axisgfsm #(
 		o_err  <= 1'b0;
 		// }}}
 
-		case(sgstate)
+		case(sgstate) // @suppress "Default clause missing from case statement"
 		SG_IDLE: // IDLE -- waiting for start
 			// {{{
 			begin
@@ -341,7 +341,7 @@ module	axisgfsm #(
 			end
 
 			tbl_last <= 1'b0;
-			case(i_pf_insn[31:30])
+			case(i_pf_insn[31:30]) // @suppress "Default clause missing from case statement"
 			2'b00: // Other items still to follow
 				tbl_last <= 1'b0;
 			2'b01: // Last item in the chain

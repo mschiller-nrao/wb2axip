@@ -56,7 +56,7 @@
 //
 `default_nettype	none
 //
-`define	WBA_ALTERNATING
+`define	WBA_ALTERNATING // @suppress "Macro 'WBA_ALTERNATING' is never used"
 // }}}
 module	wbarbiter #(
 		// {{{

@@ -40,8 +40,8 @@ entity axlite2wbsp_wrapper is
     generic (
         C_AXI_ADDR_WIDTH : integer := 28;
         LGFIFO : integer := 4;
-        F_MAXSTALL : integer := 3;
-        F_MAXDELAY : integer := 3;
+        --F_MAXSTALL : integer := 3;
+        --F_MAXDELAY : integer := 3;
        
         --- Must not be changed.
         C_AXI_DATA_WIDTH : integer := 32
@@ -52,7 +52,7 @@ entity axlite2wbsp_wrapper is
        
         s_axi_awready : out std_logic;
         s_axi_awaddr : in std_logic_vector(C_AXI_ADDR_WIDTH-1 downto 0);
-        s_axi_awcache : in std_logic_vector(3 downto 0);
+        --s_axi_awcache : in std_logic_vector(3 downto 0);
         s_axi_awprot : in std_logic_vector(2 downto 0);
         s_axi_awvalid : in std_logic;
         s_axi_wready : out std_logic;
@@ -64,7 +64,7 @@ entity axlite2wbsp_wrapper is
         s_axi_bready : in std_logic;
         s_axi_arready : out std_logic;
         s_axi_araddr : in std_logic_vector(C_AXI_ADDR_WIDTH-1 downto 0);
-        s_axi_arcache : in std_logic_vector(3 downto 0);
+        --s_axi_arcache : in std_logic_vector(3 downto 0);
         s_axi_arprot : in std_logic_vector(2 downto 0);
         s_axi_arvalid : in std_logic;
         s_axi_rresp : out std_logic_vector(1 downto 0);
@@ -92,16 +92,16 @@ begin
     axlite2wbsp : entity work.axlite2wbsp
         generic map (
             C_AXI_ADDR_WIDTH => C_AXI_ADDR_WIDTH,
-            LGFIFO => LGFIFO,
-            F_MAXSTALL => F_MAXSTALL,
-            F_MAXDELAY => F_MAXDELAY
+            LGFIFO => LGFIFO
+            --F_MAXSTALL => F_MAXSTALL,
+            --F_MAXDELAY => F_MAXDELAY
         )
         port map (
             i_clk => s_axi_aclk,
             i_axi_reset_n => s_axi_aresetn,
             o_axi_awready => s_axi_awready,
             i_axi_awaddr => s_axi_awaddr,
-            i_axi_awcache => s_axi_awcache,
+            --i_axi_awcache => s_axi_awcache,
             i_axi_awprot => s_axi_awprot,
             i_axi_awvalid => s_axi_awvalid,
             o_axi_wready => s_axi_wready,
@@ -113,7 +113,7 @@ begin
             i_axi_bready => s_axi_bready,
             o_axi_arready => s_axi_arready,
             i_axi_araddr => s_axi_araddr,
-            i_axi_arcache => s_axi_arcache,
+            --i_axi_arcache => s_axi_arcache,
             i_axi_arprot => s_axi_arprot,
             i_axi_arvalid => s_axi_arvalid,
             o_axi_rresp => s_axi_rresp,

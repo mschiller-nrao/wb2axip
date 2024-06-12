@@ -83,7 +83,7 @@ module	axi_addr #(
 	else if (DSZ == 2)
 		increment = (i_size[1]) ? 4 : ((i_size[0]) ? 2 : 1);
 	else if (DSZ == 3)
-		case(i_size[1:0])
+		case(i_size[1:0]) // @suppress "Default clause missing from case statement"
 		2'b00: increment = 1;
 		2'b01: increment = 2;
 		2'b10: increment = 4;
@@ -170,7 +170,7 @@ module	axi_addr #(
 		begin
 			// {{{
 			// Align any subsequent address
-			case(i_size[1:0])
+			case(i_size[1:0]) // @suppress "Default clause missing from case statement"
 			2'b00:  aligned_addr = unaligned_addr;
 			2'b01:  aligned_addr[  0] = 0;
 			2'b10:  aligned_addr[(AW-1>1) ? 1 : (AW-1):0]= 0;

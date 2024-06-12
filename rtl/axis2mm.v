@@ -1370,7 +1370,7 @@ module	axis2mm #(
 	begin
 		wr_writes_pending <= 0;
 		wr_none_pending   <= 1;
-	end else case ({ phantom_start,
+	end else case ({ phantom_start, // @suppress "Default clause missing from case statement"
 			M_AXI_WVALID && M_AXI_WREADY })
 	2'b00: begin end
 	2'b01: begin

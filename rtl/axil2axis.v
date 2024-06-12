@@ -569,7 +569,7 @@ module	axil2axis #(
 	else if (!S_AXI_RVALID || S_AXI_RREADY)
 	begin
 		axil_read_data <= 0;
-		casez(arskd_addr)
+		casez(arskd_addr) // @suppress "Default clause missing from case statement"
 		{ ADDR_SINK[1], 1'b? }:	begin
 			if (OPT_SIGN_EXTEND && rfifo_data[SW-1])
 				axil_read_data <= -1;

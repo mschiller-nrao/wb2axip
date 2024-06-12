@@ -415,7 +415,7 @@ module demofull #(
 		// {{{
 		.AW(AW), .DW(DW)
 		// }}}
-	) get_next_wr_addr(
+	) get_next_wr_addr( // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 		// {{{
 		waddr, wsize, wburst, wlen,
 			next_wr_addr
@@ -594,7 +594,7 @@ module demofull #(
 		// {{{
 		.AW(AW), .DW(DW)
 		// }}}
-	) get_next_rd_addr(
+	) get_next_rd_addr( // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 		// {{{
 		(S_AXI_ARREADY ? S_AXI_ARADDR : raddr),
 		(S_AXI_ARREADY  ? S_AXI_ARSIZE : rsize),

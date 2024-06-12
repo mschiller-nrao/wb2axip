@@ -210,7 +210,7 @@ module axilsafety #(
 		, .OPT_PASSTHROUGH(1'b1)
 `endif
 		// }}}
-	) awskd(S_AXI_ACLK, !S_AXI_ARESETN,
+	) awskd(S_AXI_ACLK, !S_AXI_ARESETN, // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 		// {{{
 		S_AXI_AWVALID, S_AXI_AWREADY, { S_AXI_AWPROT, S_AXI_AWADDR },
 		awskd_valid, awskd_ready, { awskd_prot, awskd_addr});
@@ -269,7 +269,7 @@ module axilsafety #(
 		, .OPT_PASSTHROUGH(1'b1)
 `endif
 		// }}}
-	) wskd(S_AXI_ACLK, !S_AXI_ARESETN,
+	) wskd(S_AXI_ACLK, !S_AXI_ARESETN, // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 		// {{{
 		S_AXI_WVALID, S_AXI_WREADY, { S_AXI_WDATA, S_AXI_WSTRB },
 		wskd_valid, wskd_ready, { wskd_data, wskd_strb});
@@ -324,7 +324,7 @@ module axilsafety #(
 	assign	bskd_resp  = M_AXI_BRESP;
 `else
 	skidbuffer #(.DW(2)
-	) bskd(S_AXI_ACLK, !S_AXI_ARESETN || !M_AXI_ARESETN,
+	) bskd(S_AXI_ACLK, !S_AXI_ARESETN || !M_AXI_ARESETN, // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 		M_AXI_BVALID, M_AXI_BREADY, M_AXI_BRESP,
 		bskd_valid, bskd_ready,  bskd_resp);
 `endif
@@ -416,7 +416,7 @@ module axilsafety #(
 		, .OPT_PASSTHROUGH(1'b1)
 `endif
 		// }}}
-	) arskd(S_AXI_ACLK, !S_AXI_ARESETN,
+	) arskd(S_AXI_ACLK, !S_AXI_ARESETN, // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 		// {{{
 		S_AXI_ARVALID, S_AXI_ARREADY, { S_AXI_ARPROT, S_AXI_ARADDR },
 		arskd_valid, arskd_ready,  { arskd_prot, arskd_addr });
@@ -468,7 +468,7 @@ module axilsafety #(
 	assign	{ rskd_resp, rskd_data } = { M_AXI_RRESP, M_AXI_RDATA };
 `else
 	skidbuffer #(.DW(DW+2)
-	) rskd(S_AXI_ACLK, !S_AXI_ARESETN || !M_AXI_ARESETN,
+	) rskd(S_AXI_ACLK, !S_AXI_ARESETN || !M_AXI_ARESETN, // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 		M_AXI_RVALID, M_AXI_RREADY, { M_AXI_RRESP, M_AXI_RDATA },
 		rskd_valid, rskd_ready,  { rskd_resp, rskd_data });
 `endif

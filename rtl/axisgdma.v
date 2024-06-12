@@ -915,7 +915,7 @@ module	axisgdma #(
 		.DW(C_AXI_ID_WIDTH + C_AXI_ADDR_WIDTH + LENWIDTH
 				+ 3 + 2 + 4  +3 + 4)
 		// }}}
-	) marskd(
+	) marskd( // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 		// {{{
 		S_AXI_ACLK, !S_AXI_ARESETN, m_axi_arvalid, m_axi_arready,
 		{ m_axi_arid, m_axi_araddr, m_axi_arlen, m_axi_arsize,

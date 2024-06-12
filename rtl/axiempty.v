@@ -100,12 +100,12 @@ module axiempty #(
 	wire	[IW-1:0]	m_awid;
 	//
 	skidbuffer #(.DW(IW), .OPT_OUTREG(1'b0))
-	awskd(S_AXI_ACLK, !S_AXI_ARESETN,
+	awskd(S_AXI_ACLK, !S_AXI_ARESETN, // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 		S_AXI_AWVALID, S_AXI_AWREADY, S_AXI_AWID,
 		m_awvalid, m_awready, m_awid );
 
 	skidbuffer #(.DW(1), .OPT_OUTREG(1'b0))
-	wskd(S_AXI_ACLK, !S_AXI_ARESETN,
+	wskd(S_AXI_ACLK, !S_AXI_ARESETN, // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 		S_AXI_WVALID, S_AXI_WREADY, S_AXI_WLAST,
 		m_wvalid, m_wready, m_wlast );
 	// }}}

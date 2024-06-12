@@ -636,7 +636,7 @@ module	axivdisplay #(
 		always @(posedge i_clk)
 		if (reset_fifo)
 			fifo_space_available <= (1<<LGFIFO);
-		else case({phantom_start, read_from_fifo && !fifo_empty })
+		else case({phantom_start, read_from_fifo && !fifo_empty }) // @suppress "Default clause missing from case statement"
 		2'b00: begin end
 		// Verilator lint_off WIDTH
 		2'b10: fifo_space_available <= fifo_space_available - (M_AXI_ARLEN+1);
@@ -649,7 +649,7 @@ module	axivdisplay #(
 		assign	read_from_fifo = M_AXIS_TVALID && M_AXIS_TREADY;
 
 		sfifo #(.BW(C_AXI_DATA_WIDTH+2), .LGFLEN(LGFIFO))
-		sfifo(i_clk, reset_fifo,
+		sfifo(i_clk, reset_fifo, // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 			write_to_fifo, { vlast && hlast, hlast, write_data },
 				fifo_full, fifo_fill,
 			read_from_fifo, { M_AXIS_VLAST, M_AXIS_HLAST,

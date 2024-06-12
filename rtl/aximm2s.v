@@ -891,7 +891,7 @@ module	aximm2s #(
 			// {{{
 			.BW(C_AXI_DATA_WIDTH+1), .LGFLEN(LGFIFO)
 			// }}}
-		) sfifo(
+		) sfifo( // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 			// {{{
 			i_clk, reset_fifo,
 			write_to_fifo, { tlast, write_data }, fifo_full, fifo_fill,
@@ -907,7 +907,7 @@ module	aximm2s #(
 			// {{{
 			.BW(C_AXI_DATA_WIDTH), .LGFLEN(LGFIFO)
 			// }}}
-		) sfifo(
+		) sfifo( // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 			// {{{
 			i_clk, reset_fifo,
 			write_to_fifo, write_data, fifo_full, fifo_fill,
@@ -1143,7 +1143,7 @@ module	aximm2s #(
 	if (reset_fifo)
 	begin
 		rd_uncommitted <= (1<<LGFIFO);
-	end else case ({ phantom_start,
+	end else case ({ phantom_start, // @suppress "Default clause missing from case statement"
 			M_AXIS_TVALID && M_AXIS_TREADY })
 	2'b00: begin end
 	2'b01: begin

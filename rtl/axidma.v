@@ -1038,7 +1038,7 @@ module	axidma #(
 			.LGFLEN(LGFIFO),
 			.OPT_ASYNC_READ(1'b1)
 			// }}}
-		) middata(
+		) middata( // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 			// {{{
 			i_clk, fifo_reset,
 				r_write_fifo, r_realigned_incoming,
@@ -1189,7 +1189,7 @@ module	axidma #(
 			.LGFLEN(LGFIFO),
 			.OPT_ASYNC_READ(1'b1)
 			// }}}
-		) middata(
+		) middata( // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 			// {{{
 			i_clk, fifo_reset,
 				r_write_fifo, M_AXI_RDATA, fifo_full, fifo_fill,

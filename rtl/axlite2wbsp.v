@@ -126,7 +126,7 @@ module axlite2wbsp #(
 	wire	r_wb_we, w_wb_we;
 
 	assign	r_wb_we = 1'b0;
-	assign	w_wb_we = 1'b1;
+	assign	w_wb_we = 1'b1; // @suppress "Duplicate continuous assignment to 'w_wb_we'"
 	// verilator lint_on  UNUSED
 
 `ifdef	FORMAL
@@ -222,7 +222,7 @@ module axlite2wbsp #(
 `endif
 		// }}}
 	end endgenerate
-	assign	w_wb_we = 1'b1;
+	assign	w_wb_we = 1'b1; // @suppress "Duplicate continuous assignment to 'w_wb_we'"
 	// }}}
 	////////////////////////////////////////////////////////////////////////
 	//

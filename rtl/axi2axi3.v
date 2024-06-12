@@ -284,7 +284,7 @@ module	axi2axi3 #(
 		axi_awaddr <= axi_awaddr + ((M_AXI_AWLEN + 1) << M_AXI_AWSIZE);
 		// Verilator lint_on  WIDTH
 
-		case(M_AXI_AWSIZE)
+		case(M_AXI_AWSIZE) // @suppress "Default clause missing from case statement"
 		3'b000: begin end
 		3'b001: axi_awaddr[  0] <= 0;
 		3'b010: axi_awaddr[1:0] <= 0;
@@ -424,7 +424,7 @@ module	axi2axi3 #(
 	end
 
 	sfifo #(.BW(C_AXI_ID_WIDTH+4+1), .LGFLEN(LGWFIFO))
-	wfifo(S_AXI_ACLK, !S_AXI_ARESETN,
+	wfifo(S_AXI_ACLK, !S_AXI_ARESETN, // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 		(!M_AXI_AWVALID || M_AXI_AWREADY)&&(awskd_valid||(r_awlen > 0))
 			&& !write_idle,
 		// The length of the next burst
@@ -530,7 +530,7 @@ module	axi2axi3 #(
 			wbfifo_valid[ID] <= !wbfifo_empty;
 
 		sfifo #(.BW(1), .LGFLEN(LGFIFO))
-		wbfifo(S_AXI_ACLK, !S_AXI_ARESETN,
+		wbfifo(S_AXI_ACLK, !S_AXI_ARESETN, // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 			(M_AXI_WVALID && M_AXI_WREADY && M_AXI_WLAST)
 				&& (M_AXI_WID == ID),
 			(r_wlen == 0) ? 1'b1 : 1'b0,
@@ -715,7 +715,7 @@ module	axi2axi3 #(
 		axi_araddr <= axi_araddr + ((M_AXI_ARLEN + 1) << M_AXI_ARSIZE);
 		// Verilator lint_on  WIDTH
 
-		case(M_AXI_AWSIZE)
+		case(M_AXI_AWSIZE) // @suppress "Default clause missing from case statement"
 		3'b000: begin end
 		3'b001: axi_araddr[  0] <= 0;
 		3'b010: axi_araddr[1:0] <= 0;
@@ -767,7 +767,7 @@ module	axi2axi3 #(
 			rbfifo_valid[ID] <= !rbfifo_empty;
 
 		sfifo #(.BW(1), .LGFLEN(LGFIFO))
-		rbfifo(S_AXI_ACLK, !S_AXI_ARESETN,
+		rbfifo(S_AXI_ACLK, !S_AXI_ARESETN, // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 			(!M_AXI_ARVALID || M_AXI_ARREADY)
 				&& (((r_arlen>0)&&(M_AXI_ARID==ID))
 					|| (arskd_valid && arskd_id == ID)),
