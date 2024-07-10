@@ -370,7 +370,7 @@ module	axilfetch #(
 		assign	fifo_rd = !o_valid || (i_ready && (out_fill <= 1));
 		// Verilator lint_on  CMPCONST
 
-		sfifo #(
+		wb2axip_sfifo #(
 			// {{{
 			.BW(1+C_AXI_DATA_WIDTH), .LGFLEN(LGFIFO)
 			// }}}

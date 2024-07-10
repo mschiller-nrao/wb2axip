@@ -23,7 +23,7 @@
 //
 `default_nettype	none
 // }}}
-module sfifo #(
+module wb2axip_sfifo #(
 		// {{{
 		parameter	BW=8,	// Byte/data width
 		parameter 	LGFLEN=4,

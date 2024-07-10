@@ -416,7 +416,7 @@ module axi2axilite #(
 
 		// BFIFO
 		// {{{
-		sfifo	#(
+		wb2axip_sfifo	#(
 			.BW(C_AXI_ID_WIDTH+8), .LGFLEN(LGFIFO)
 		) bidlnfifo( // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 			S_AXI_ACLK, !S_AXI_ARESETN,
@@ -690,7 +690,7 @@ module axi2axilite #(
 
 		// Read ID FIFO
 		// {{{
-		sfifo	#(
+		wb2axip_sfifo	#(
 			// {{{
 			.BW(C_AXI_ID_WIDTH+8), .LGFLEN(LGFIFO)
 			// }}}

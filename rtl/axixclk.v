@@ -198,7 +198,7 @@ module axixclk #(
 	end else begin : WRITE_FIFO
 		wire	awfull, awempty, wfull, wempty, bfull, bempty;
 
-		afifo #(.LGFIFO(LGFIFO),
+		wb2axip_afifo #(.LGFIFO(LGFIFO),
 			.NFF(XCLOCK_FFS),
 			.WIDTH(C_S_AXI_ID_WIDTH + C_S_AXI_ADDR_WIDTH
 				+ 8 + 3 + 2 + 1 + 4 + 3 + 4))
@@ -218,7 +218,7 @@ module axixclk #(
 		assign	M_AXI_AWVALID = !awempty;
 		assign	S_AXI_AWREADY = !awfull;
 
-		afifo #(.LGFIFO(LGFIFO),
+		wb2axip_afifo #(.LGFIFO(LGFIFO),
 			.NFF(XCLOCK_FFS),
 			.WIDTH(C_S_AXI_DATA_WIDTH + C_S_AXI_DATA_WIDTH/8 + 1))
 		wfifo(S_AXI_ACLK, S_AXI_ARESETN, S_AXI_WVALID&& S_AXI_WREADY, // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
@@ -231,7 +231,7 @@ module axixclk #(
 		assign	M_AXI_WVALID = !wempty;
 		assign	S_AXI_WREADY = !wfull;
 
-		afifo #(.LGFIFO(LGFIFO),
+		wb2axip_afifo #(.LGFIFO(LGFIFO),
 			.NFF(XCLOCK_FFS),
 			.WIDTH(C_S_AXI_ID_WIDTH + 2))
 		bfifo(M_AXI_ACLK, M_AXI_ARESETN, M_AXI_BVALID&& M_AXI_BREADY, // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
@@ -273,7 +273,7 @@ module axixclk #(
 	end else begin : READ_FIFO
 		wire	arfull, arempty, rfull, rempty;
 
-		afifo #(.LGFIFO(LGFIFO),
+		wb2axip_afifo #(.LGFIFO(LGFIFO),
 			.NFF(XCLOCK_FFS),
 			.WIDTH(C_S_AXI_ID_WIDTH + C_S_AXI_ADDR_WIDTH
 				+ 8 + 3 + 2 + 1 + 4 + 3 + 4))
@@ -294,7 +294,7 @@ module axixclk #(
 		assign	S_AXI_ARREADY = !arfull;
 
 
-		afifo #(.LGFIFO(LGFIFO),
+		wb2axip_afifo #(.LGFIFO(LGFIFO),
 			.NFF(XCLOCK_FFS),
 			.WIDTH(C_S_AXI_ID_WIDTH + C_S_AXI_DATA_WIDTH+3))
 		rfifo(M_AXI_ACLK, M_AXI_ARESETN, M_AXI_RVALID&& M_AXI_RREADY, // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"

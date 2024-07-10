@@ -154,7 +154,7 @@ module	wbxclk #(
 	//
 	// The request FIFO itself
 	// {{{
-	afifo #(
+	wb2axip_afifo #(
 `ifdef	FORMAL
 		.OPT_REGISTER_READS(0),
 		.F_OPT_DATA_STB(1'b0),
@@ -274,7 +274,7 @@ module	wbxclk #(
 	//
 	// The return FIFO
 	// {{{
-	afifo #(
+	wb2axip_afifo #(
 		.OPT_REGISTER_READS(0),
 		.NFF(NFF), .LGFIFO(LGFIFO),
 		.WIDTH(2+DW)

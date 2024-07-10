@@ -1032,7 +1032,7 @@ module	axidma #(
 		else if (!r_write_fifo || !fifo_full)
 			r_realigned_incoming <= r_partial_inword;
 
-		sfifo #(
+		wb2axip_sfifo #(
 			// {{{
 			.BW(C_AXI_DATA_WIDTH),
 			.LGFLEN(LGFIFO),
@@ -1183,7 +1183,7 @@ module	axidma #(
 			clear_read_pipeline = 1'b0;
 		end
 
-		sfifo #(
+		wb2axip_sfifo #(
 			// {{{
 			.BW(C_AXI_DATA_WIDTH),
 			.LGFLEN(LGFIFO),

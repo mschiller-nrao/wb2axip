@@ -67,7 +67,7 @@ module sfifothresh(i_clk, i_reset,
 	wire	w_wr = (i_wr && !o_full);
 	wire	w_rd = (i_rd && !o_empty);
 
-	sfifo #(
+	wb2axip_sfifo #(
 		.BW(BW), .LGFLEN(LGFLEN), .OPT_ASYNC_READ(OPT_ASYNC_READ)
 	) sfifoi( // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 		i_clk, i_reset, i_wr, i_data, o_full, o_fill, i_rd,

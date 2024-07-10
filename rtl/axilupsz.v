@@ -285,7 +285,7 @@ module	axilupsz #(
 
 		// Read LSB address FIFO
 		// {{{
-		sfifo #(
+		wb2axip_sfifo #(
 			// {{{
 			.BW(MLSB-SLSB),
 			.LGFLEN(LGFIFO)

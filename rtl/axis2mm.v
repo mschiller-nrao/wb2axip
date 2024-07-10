@@ -1129,7 +1129,7 @@ module	axis2mm #(
 	generate if (C_AXIS_TUSER_WIDTH > 0)
 	begin : FIFO_WITH_USER_DATA
 
-		sfifo #(
+		wb2axip_sfifo #(
 			// {{{
 			.BW(C_AXIS_TUSER_WIDTH + C_AXI_DATA_WIDTH),
 			.LGFLEN(LGFIFO), .OPT_ASYNC_READ(OPT_ASYNCMEM)
@@ -1149,7 +1149,7 @@ module	axis2mm #(
 
 	end else begin : NO_USER_DATA
 
-		sfifo #(
+		wb2axip_sfifo #(
 			// {{{
 			.BW(C_AXI_DATA_WIDTH),
 			.LGFLEN(LGFIFO), .OPT_ASYNC_READ(OPT_ASYNCMEM)

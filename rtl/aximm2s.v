@@ -887,7 +887,7 @@ module	aximm2s #(
 		end
 
 
-		sfifo #(
+		wb2axip_sfifo #(
 			// {{{
 			.BW(C_AXI_DATA_WIDTH+1), .LGFLEN(LGFIFO)
 			// }}}
@@ -903,7 +903,7 @@ module	aximm2s #(
 
 		// FIFO section, where TLAST is held at 1'b1
 		// {{{
-		sfifo #(
+		wb2axip_sfifo #(
 			// {{{
 			.BW(C_AXI_DATA_WIDTH), .LGFLEN(LGFIFO)
 			// }}}

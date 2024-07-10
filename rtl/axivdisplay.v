@@ -648,7 +648,7 @@ module	axivdisplay #(
 		assign	M_AXIS_TVALID  = !fifo_empty;
 		assign	read_from_fifo = M_AXIS_TVALID && M_AXIS_TREADY;
 
-		sfifo #(.BW(C_AXI_DATA_WIDTH+2), .LGFLEN(LGFIFO))
+		wb2axip_sfifo #(.BW(C_AXI_DATA_WIDTH+2), .LGFLEN(LGFIFO))
 		sfifo(i_clk, reset_fifo, // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 			write_to_fifo, { vlast && hlast, hlast, write_data },
 				fifo_full, fifo_fill,

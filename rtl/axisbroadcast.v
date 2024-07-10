@@ -97,7 +97,7 @@ module	axisbroadcast #(
 	generate for(gk=0; gk<NM; gk=gk+1)
 	begin : OUTGOING_FIFOS
 		wire			fifo_empty;
-		sfifo #(
+		wb2axip_sfifo #(
 			.BW(DW),	
 			.LGFLEN(LGFIFO)
 		) fifo (

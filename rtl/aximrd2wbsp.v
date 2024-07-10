@@ -316,7 +316,7 @@ module	aximrd2wbsp #(
 	assign	lastid_fifo_wr = (o_wb_stb && (i_wb_err || !i_wb_stall))
 			||(err_state && midissue && !lastid_fifo_full);
 
-	sfifo #(.BW(C_AXI_ID_WIDTH+1), .LGFLEN(LGFIFO))
+	wb2axip_sfifo #(.BW(C_AXI_ID_WIDTH+1), .LGFLEN(LGFIFO))
 	lastid_fifo(S_AXI_ACLK, w_reset, // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 		lastid_fifo_wr,
 		{ axi_id, last_stb },
@@ -351,7 +351,7 @@ module	aximrd2wbsp #(
 
 	// resp_fifo
 	// {{{
-	sfifo #(.BW(C_AXI_DATA_WIDTH+1), .LGFLEN(LGFIFO))
+	wb2axip_sfifo #(.BW(C_AXI_DATA_WIDTH+1), .LGFLEN(LGFIFO))
 	resp_fifo(S_AXI_ACLK, w_reset, // @suppress "Positional port connections for an instance with more than 3 ports. Consider using named port connections instead"
 		o_wb_cyc && (i_wb_ack || i_wb_err), { read_data, i_wb_err },
 		resp_fifo_full, resp_fifo_fill,

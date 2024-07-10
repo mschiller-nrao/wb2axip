@@ -721,7 +721,7 @@ module	axidouble #(
 
 	// Backpressure FIFO on write response returns
 	// {{{
-	sfifo #(
+	wb2axip_sfifo #(
 		// {{{
 		.BW(C_AXI_ID_WIDTH+2),
 		.OPT_ASYNC_READ(0),
@@ -1008,7 +1008,7 @@ module	axidouble #(
 	// {{{
 	// Send the return results through a synchronous FIFO to handle
 	// back-pressure.  Doing this costs us one clock of latency.
-	sfifo #(
+	wb2axip_sfifo #(
 		// {{{
 		.BW(C_AXI_ID_WIDTH+DW+1+2),
 		.OPT_ASYNC_READ(0), .LGFLEN(LGFLEN)

@@ -186,7 +186,7 @@ module	axi3reorder #(
 		////////////////////////////////////////////////////////////////
 		//
 		//
-		sfifo #(
+		wb2axip_sfifo #(
 			// {{{
 			.BW(IW),
 			.LGFLEN(LGAWFIFO),
@@ -514,7 +514,7 @@ module	axi3reorder #(
 		// {{{
 			wire	[LGWFIFO:0]	wbfifo_fill;
 
-			sfifo #(
+			wb2axip_sfifo #(
 				.BW(DW+(DW/8)+1),
 				.LGFLEN(LGWFIFO),
 				.OPT_READ_ON_EMPTY(OPT_LOW_LATENCY)
@@ -669,7 +669,7 @@ module	axi3reorder #(
 		wire	[DW/8-1:0]	f_ckfifo_strb;
 		wire			f_ckfifo_last;
 
-		sfifo #(
+		wb2axip_sfifo #(
 			.BW(IW + DW + (DW/8) + 1),
 			.LGFLEN(LGWFIFO),
 			.OPT_READ_ON_EMPTY(OPT_LOW_LATENCY)

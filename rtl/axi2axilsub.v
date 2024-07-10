@@ -747,7 +747,7 @@ module axi2axilsub #(
 
 		// BFIFO
 		// {{{
-		sfifo	#(
+		wb2axip_sfifo	#(
 			// {{{
 			.BW(BIDFIFOBW), .LGFLEN(LGFIFO)
 			// }}}
@@ -1637,7 +1637,7 @@ module axi2axilsub #(
 
 		// Read ID FIFO
 		// {{{
-		sfifo	#(
+		wb2axip_sfifo	#(
 			// {{{
 			.BW(IW+2+SLVSZ-MSTSZ),
 			.LGFLEN(LGFIFO)

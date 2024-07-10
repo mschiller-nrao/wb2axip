@@ -33,7 +33,7 @@
 //
 `default_nettype	none
 // }}}
-module afifo #(
+module wb2axip_afifo #(
 		// {{{
 		// LGFIFO is the log based-two of the number of entries
 		//	in the FIFO, log_2(fifo size)

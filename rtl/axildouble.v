@@ -309,7 +309,7 @@ module	axildouble #(
 		assert(bfull == (write_count == { 1'b1, {(LGFLEN){1'b0}} }));
 `endif
 
-	sfifo #(.BW(2), .OPT_ASYNC_READ(0), .LGFLEN(LGFLEN))
+	wb2axip_sfifo #(.BW(2), .OPT_ASYNC_READ(0), .LGFLEN(LGFLEN))
 	bfifo ( .i_clk(S_AXI_ACLK), .i_reset(!S_AXI_ARESETN),
 		.i_wr(write_response), .i_data(write_resp), .o_full(bffull),
 			.o_fill(bfill),
@@ -441,7 +441,7 @@ module	axildouble #(
 `endif
 	assign	S_AXI_ARREADY = !read_full;
 
-	sfifo #(.BW(DW+2), .OPT_ASYNC_READ(0), .LGFLEN(LGFLEN))
+	wb2axip_sfifo #(.BW(DW+2), .OPT_ASYNC_READ(0), .LGFLEN(LGFLEN))
 	rfifo ( .i_clk(S_AXI_ACLK), .i_reset(!S_AXI_ARESETN),
 		.i_wr(read_result), .i_data({ read_rdata, read_resp }),
 			.o_full(rdfull), .o_fill(rfill),
