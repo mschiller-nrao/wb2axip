@@ -1,0 +1,10 @@
+#because this is a gray code, we need very little constraint here
+set_false_path -from [get_entity_current_instance]|rgray[*] -to [get_entity_current_instance]|rgray_cross[*]
+set_false_path -from [get_entity_current_instance]|wgray[*] -to [get_entity_current_instance]|wgray_cross[*]
+
+
+set_data_delay -from [get_entity_current_instance]|rgray[*] -to [get_entity_current_instance]|rgray_cross[*] -get_value_from_clock_period dst_clock_period -value_multiplier 0.8
+set_max_skew -from [get_entity_current_instance]|rgray[*] -to [get_entity_current_instance]|rgray_cross[*]] -get_skew_value_from_clock_period min_clock_period -skew_value_multiplier 0.8
+
+set_data_delay -from [get_entity_current_instance]|wgray[*] -to [get_entity_current_instance]|wgray_cross[*] -get_value_from_clock_period dst_clock_period -value_multiplier 0.8
+set_max_skew -from [get_entity_current_instance]|wgray[*] -to [get_entity_current_instance]|wgray_cross[*]  -get_skew_value_from_clock_period min_clock_period -skew_value_multiplier 0.8
