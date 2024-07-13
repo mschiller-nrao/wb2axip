@@ -1,0 +1,1 @@
+set_false_path -from [get_keepers -no_duplicates {*|areset_worker_n*}] -to [get_keepers -no_duplicates {*|mreset[*]*}]
